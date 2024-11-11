@@ -1,17 +1,14 @@
 package _2024_11;
 
-import sun.applet.Main;
-
-import javax.print.Doc;
-
-public class 二分查找 {
+public class binary_search {
 
     public static int func(int[] a, int target) {
 
         int index_i=0;
         int index_j=a.length-1;
         int index_m = (index_j+index_i)/2;
-        while (index_i<index_j){
+        while (index_i<=index_j){
+            //=因为当 i= m = j 的时候有可能正好是目标值
             if (a[index_m]==target){
                 return 1;
             }
