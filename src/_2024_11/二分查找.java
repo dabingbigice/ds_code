@@ -28,7 +28,7 @@ public class 二分查找 {
     }
 
     public static void main(String[] args) {
-        System.out.println(func(new int[]{1,3,6,9,10,12},10));
+        System.out.println(func(new int[]{1,3,6,9,10,12},10));//1
     }
 }
 
