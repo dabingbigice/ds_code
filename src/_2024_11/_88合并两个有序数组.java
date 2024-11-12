@@ -38,11 +38,10 @@ public class _88合并两个有序数组 {
         int i = m - 1;
         int j = n - 1;
         int k = nums1.length - 1;//指向需要修改的那个元素
-
+        //从后往前比较大的元素，把大的放到现有数组的最后，如果i已经比较完了。那么把j的数据全部放进去
         while (i >= 0 && j >= 0) {
-            //往前移动
-            if (nums1[i] <= nums2[j]) {
-                //把数据放在nums1中的最后那个元素
+            //一直比较
+            if (nums1[i] < nums2[j]) {
                 nums1[k] = nums2[j];
                 j--;
             } else {
@@ -50,18 +49,17 @@ public class _88合并两个有序数组 {
                 i--;
             }
             k--;
-
         }
-
+        //如果i>0，那么表面J已经全部放进去了。而j>0表明还没合并剩下的元素。
         while (j >= 0) {
-            nums1[k] = nums2[j];
-            j--;
-            k--;
+            nums1[k--] = nums2[j--];
         }
+
     }
 
     /**
      * 赋值完成后进行拷贝再排序
+     *
      * @param nums1
      * @param m
      * @param nums2
