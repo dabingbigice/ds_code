@@ -1,7 +1,12 @@
 package _2024_11;
 
 public class binary_search {
-
+    /**
+     * 除法用移位操作。比较符号小的放小的那一边
+     * @param a
+     * @param target
+     * @return
+     */
     public static int func(int[] a, int target) {
 
         int index_i = 0;
@@ -25,7 +30,7 @@ public class binary_search {
     }
 
     public static void main(String[] args) {
-        System.out.println(func(new int[]{1, 3, 6, 9, 10, 12}, 10));//1
+        System.out.println(func(new int[]{1, 3, 6, 10, 10, 12}, 10));//1
     }
 }
 
