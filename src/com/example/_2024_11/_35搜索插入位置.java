@@ -1,4 +1,4 @@
-package _2024_11;
+package com.example._2024_11;
 
 public class _35搜索插入位置 {
     /*

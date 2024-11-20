@@ -1,7 +1,5 @@
-package _2024_11;
+package com.example._2024_11;
 
-
-import java.util.Arrays;
 
 public class _34在排序数组中查找元素的第一个和最后一个位置 {
     /*

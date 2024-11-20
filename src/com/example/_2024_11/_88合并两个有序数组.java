@@ -1,6 +1,5 @@
-package _2024_11;
+package com.example._2024_11;
 
-import java.awt.font.NumericShaper;
 import java.util.Arrays;
 
 /*
