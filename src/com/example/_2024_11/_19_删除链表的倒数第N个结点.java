@@ -8,6 +8,7 @@ public class _19_删除链表的倒数第N个结点 {
         ListNode next;
 
         ListNode() {
+
         }
 
         ListNode(int val) {
@@ -23,7 +24,7 @@ public class _19_删除链表的倒数第N个结点 {
     //给你一个链表，删除链表的倒数第 n 个结点，并且返回链表的头结点。
 
     /**
-     * 思路：使用栈。
+     * 思路：使用栈。带头结点的
      * 将所有头节点压栈，然后按顺序弹出就是倒数的节点。只需要将当前要删除的数据的node.next赋值给pre
      *
      * @param head
@@ -34,8 +35,9 @@ public class _19_删除链表的倒数第N个结点 {
         if (head.next == null && n == 1) {
             return null;
         }
+        ListNode dummy = new ListNode(-1, head);
         Stack<ListNode> stack = new Stack<>();
-        ListNode p = head;
+        ListNode p = dummy;
         while (p != null) {
             stack.push(p);
             p = p.next;
@@ -48,13 +50,10 @@ public class _19_删除链表的倒数第N个结点 {
             j++;
         }
         //直到j>n，这个时候栈顶元素就是需要删除的元素的前一个元素
-        if (!stack.empty()) {
-            ListNode pre = stack.pop();
-            pre.next = pre.next.next;
-        }else {
-            head=head.next;
-        }
-        return head;
+
+        ListNode pre = stack.pop();
+        pre.next = pre.next.next;
+        return dummy.next;
     }
 
     /**
