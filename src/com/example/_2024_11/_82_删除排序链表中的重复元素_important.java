@@ -1,6 +1,6 @@
 package com.example._2024_11;
 
-public class _82_删除排序链表中的重复元素 {
+public class _82_删除排序链表中的重复元素_important {
     static class ListNode {
         int val;
         ListNode next;
@@ -35,23 +35,25 @@ public class _82_删除排序链表中的重复元素 {
         ListNode dummy = new ListNode(-101, head);
         //拿到pre指针
         ListNode pre = dummy;
-        while (head != null) {
-            if (head.next != null && head.next.val == head.val) {
-                //删除元素
-                while (head.next != null && head.next.val == head.val) {
-                    head = head.next;
+        ListNode current = head;
+        while (current != null) {
+            if (current.next != null && current.val == current.next.val) {
+                //当前数据等于下一个节点的数据说明重复了
+                //进行删除
+                //把判空放弃前面
+                while (current.next != null && current.val == current.next.val) {
+                    //将当前的指针后移
+                    current = current.next;
                 }
-                //得到的是一个重复的元素的头节点的链表
-                pre.next = head.next;
+                pre.next = current.next;//将最后那个重复的数据移除。最重要的操作
+                //删完后。pre不移动、
             } else {
-                //不相等的时候移动pre
+                //没删除，移动pre
                 pre = pre.next;
             }
-            //同时移动head
-            //head.next.val !=head.val
-            head = head.next;
-        }
+            current = current.next;
 
+        }
         return dummy.next;
     }
 
