@@ -31,7 +31,7 @@ public class _141_环形链表 {
         ListNode p1 = head;
         ListNode p2 = head.next.next;
         while (p2 != null) {
-            if (p1.val == p2.val && p1 == p2) {
+            if (p1 == p2) {
                 //如果相等，返回true
                 return true;
             }
