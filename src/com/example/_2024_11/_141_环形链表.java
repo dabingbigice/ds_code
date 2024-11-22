@@ -26,9 +26,9 @@ public class _141_环形链表 {
     public static boolean hasCycle(ListNode head) {
         if (head == null) return false;
         if (head.next == null) return false;
-        ListNode test = head;
 
         ListNode p1 = head;
+        //p1步长为1,p2步长为2。p2速度快
         ListNode p2 = head.next.next;
         while (p2 != null) {
             if (p1 == p2) {
