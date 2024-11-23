@@ -53,6 +53,8 @@ public class _61_旋转链表_important {
         pre.next = null;
         //获取尾部
         ListNode lastNode = headNode;
+
+
         while (lastNode.next != null) {
             lastNode = lastNode.next;
         }
