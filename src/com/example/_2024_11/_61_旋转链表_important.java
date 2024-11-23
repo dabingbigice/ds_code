@@ -19,7 +19,7 @@ public class _61_旋转链表_important {
     }
 
     /**
-     * 思路：1.先遍历整个链表，统计出来节点个数，然后对k值进行相减。此时得到需要旋转的尾节点。如果取余==0，那么不需要旋转
+     * 思路：1.先遍历整个链表，统计出来节点个数，然后对k值进行相减。此时得到需要旋转的节点的pre。如果取余==0，那么不需要旋转
      *
      * @param head
      * @param k
@@ -37,25 +37,27 @@ public class _61_旋转链表_important {
         //得到需要旋转的尾部元素的个数
         int rota = k % count;
         if (rota == 0) return head;
-        ListNode pre = head;
         //获取正数的元素的pre
         int j = count - rota;
-
+        //寻找pre指针
         count = 1;
+        //head是第一个
+        ListNode pre = head;
         while (count != j) {
             count++;
             pre = pre.next;
         }
         //拿到需要反转的重新插入的链表头部
-        ListNode preInsertHeadNode = pre;
+        ListNode headNode = pre.next;
+        //把整个链表单独拿出来
+        pre.next = null;
         //获取尾部
-        ListNode lastNode = pre.next;
+        ListNode lastNode = headNode;
         while (lastNode.next != null) {
             lastNode = lastNode.next;
         }
         lastNode.next = dummy.next;
-        dummy.next = pre.next;
-        pre.next = null;
+        dummy.next = headNode;
         return dummy.next;
     }
 
