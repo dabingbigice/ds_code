@@ -79,12 +79,15 @@ public class _143_重排链表 {
         ListNode insertNode = head;
         ListNode pop = null;
         while (insertNode != null && !stack.empty()) {
+            //先后移拿到后一个节点
             ListNode nextNode = insertNode.next;
             pop = stack.pop();
+            //将后一个节点挂在当前要插入的节点的下一个节点
             pop.next = nextNode;
             insertNode.next = pop;
             insertNode = nextNode;
         }
+        //将栈中剩余的都添加到链表
         while (!stack.empty()) {
             ListNode stackLastNode = stack.pop();
             pop.next = stackLastNode;

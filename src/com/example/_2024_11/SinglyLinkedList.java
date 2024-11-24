@@ -50,6 +50,13 @@ public class SinglyLinkedList {
         }
     }
 
+    public static void loop2(Node node) {
+        if (node == null) return;
+        System.out.println(node.value);
+        node = node.nextNode;
+        loop2(node);
+    }
+
     private Node getLastNode() {
         if (head == null) return null;
 
@@ -182,15 +189,8 @@ public class SinglyLinkedList {
         bean.addLastNode(2);
         bean.addLastNode(3);
         bean.addLastNode(4);
-        try {
-            bean.removeFirst();
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println(e.getMessage());
-        }
-        bean.loop(value -> {
-            System.out.println(value);
-        });
+
+        bean.loop2(bean.head);
     }
 
     @Test
