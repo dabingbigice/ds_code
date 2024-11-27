@@ -42,6 +42,8 @@ public class _70_爬楼梯_important {
         int y = cache(n - 2, arr);
         //缓存没有，将值放入缓存并返回该值
         arr[n] = x + y;//f(n-1)+f(n-2)
+
+
         return arr[n];
     }
 

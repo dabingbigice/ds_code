@@ -91,9 +91,24 @@ public class InsertSort {
         }
     }
 
+    public static void insertion4(int arr[]) {
+        //获取待排序的值
+        for (int i = 1; i < arr.length; i++) {
+            int temp = arr[i];//待排序的值
+            int j = i;//获取当前待排序的索引
+            //比较当前元素与前一个元素的值大小
+            while (j > 0 && temp < arr[j - 1]) {
+                arr[j] = arr[j - 1];
+                j--;
+            }
+            //找到替换的位置了，进行替换
+            arr[j] = temp;
+        }
+    }
+
     public static void main(String[] args) {
         int arr[] = new int[]{2, 4, 5, 10, 7, 1};
         // insertion(arr, 1);
-        insertion3(arr);
+        insertion4(arr);
     }
 }
