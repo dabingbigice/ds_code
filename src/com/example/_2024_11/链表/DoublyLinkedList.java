@@ -1,4 +1,4 @@
-package com.example._2024_11;
+package com.example._2024_11.链表;
 
 public class DoublyLinkedList {
     private Node head;//头

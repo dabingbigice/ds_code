@@ -1,4 +1,4 @@
-package com.example._2024_11;
+package com.example._2024_11.链表;
 
 public class _82_删除排序链表中的重复元素_important {
     static class ListNode {

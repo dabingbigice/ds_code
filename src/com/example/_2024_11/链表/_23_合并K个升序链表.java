@@ -1,7 +1,6 @@
-package com.example._2024_11;
+package com.example._2024_11.链表;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 

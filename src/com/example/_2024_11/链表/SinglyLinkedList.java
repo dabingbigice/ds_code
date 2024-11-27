@@ -1,8 +1,7 @@
-package com.example._2024_11;
+package com.example._2024_11.链表;
 
 import org.junit.jupiter.api.Test;
 
-import javax.xml.transform.Source;
 import java.util.function.Consumer;
 
 //不带 头节点

@@ -1,4 +1,4 @@
-package com.example._2024_11;
+package com.example._2024_11.链表;
 
 public class _82 {
     static class ListNode {

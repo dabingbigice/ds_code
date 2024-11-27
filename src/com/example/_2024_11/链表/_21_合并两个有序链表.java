@@ -1,4 +1,4 @@
-package com.example._2024_11;
+package com.example._2024_11.链表;
 
 public class _21_合并两个有序链表 {
     static class ListNode {

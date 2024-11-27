@@ -1,8 +1,4 @@
-package com.example._2024_11;
-
-import java.time.chrono.IsoChronology;
-
-import static com.example._2024_11._19_删除链表的倒数第N个结点.revers;
+package com.example._2024_11.链表;
 
 public class _234_回文链表 {
     static class ListNode {

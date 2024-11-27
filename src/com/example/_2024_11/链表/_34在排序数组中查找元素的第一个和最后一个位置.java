@@ -1,4 +1,4 @@
-package com.example._2024_11;
+package com.example._2024_11.链表;
 
 
 public class _34在排序数组中查找元素的第一个和最后一个位置 {

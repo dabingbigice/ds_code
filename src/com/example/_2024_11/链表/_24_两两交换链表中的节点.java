@@ -1,4 +1,4 @@
-package com.example._2024_11;
+package com.example._2024_11.链表;
 
 public class _24_两两交换链表中的节点 {
     public class ListNode {
