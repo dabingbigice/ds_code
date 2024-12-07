@@ -1,5 +1,7 @@
 package com.example._2024_11.链表;
 
+import org.w3c.dom.ls.LSInput;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -101,6 +103,48 @@ public class _23_合并K个升序链表 {
                 createList(new int[]{}),
                 createList(new int[]{})
         };
+    }
+
+    public ListNode mergeTwoLists1(ListNode list1, ListNode list2) {
+        ListNode dummy = new ListNode(-1);
+        ListNode pre = dummy;//新的头节点构建新链表
+        ListNode p1 = list1;
+        ListNode p2 = list2;
+        while (p1 != null && p2 != null) {
+            if (p1.val < p2.val) {
+                ListNode node = p1;
+                p1 = p1.next;
+                pre.next = node;
+                node.next = null;
+            } else {
+                ListNode node = p2;
+                p2 = p2.next;
+                pre.next = node;
+                node.next = null;
+            }
+            pre = pre.next;
+        }
+        if (p1 != null) {
+            pre.next = p1;
+        }
+        if (p2 != null) {
+            pre.next = p2;
+        }
+
+        return dummy.next;
+    }
+
+    public ListNode mergeKLists1(ListNode[] lists) {
+        if (lists == null || lists.length == 0) return null;
+        if (lists.length == 1) return lists[0];
+
+        ListNode listNode = mergeTwoLists1(lists[0], lists[1]);
+        for (int i = 2; i < lists.length; i++) {
+            if (lists[i] != null) {
+                listNode = mergeTwoLists1(listNode, lists[i]);
+            }
+        }
+        return listNode;
     }
 
     public static void main(String[] args) {

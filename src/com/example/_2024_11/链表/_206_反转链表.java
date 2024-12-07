@@ -47,6 +47,56 @@ public class _206_反转链表 {
         return listNode;
     }
 
+    public ListNode reverseList1(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        //头插法
+        ListNode current = head;
+        ListNode dummy = new ListNode(-1, null);
+        while (current != null) {
+            ListNode listNode = new ListNode(current.val);
+            listNode.next = dummy.next;
+            dummy.next = listNode;
+            current = current.next;
+        }
+
+        return dummy.next;
+    }
+
+    public ListNode reverseList2(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        //头插法，从旧链表的头部移走，移到新链表的头部
+        ListNode current = head;
+        ListNode dummy = new ListNode(-1, null);
+        while (current != null) {
+            //拿到当前节点
+            ListNode node = current;
+            //先移走
+            current = current.next;
+            //再操作
+            node.next = dummy.next;
+            dummy.next = node;
+        }
+
+        return dummy.next;
+    }
+
+    public ListNode reverseList3(ListNode head) {
+        //递归，递的终止条件
+        if (head == null || head.next == null) {
+            return head;
+        }
+        //传进去的是head.next。4->5.此时传进去的是5.head还是4。必须传next,反转当前节点和next节点
+        ListNode listNode = reverseList3(head.next);
+        //当前方法还能获取到head
+        head.next.next = head;
+        head.next = null;//破除环,原地反转。归出来的是每个节点，直接利用。
+        return listNode;//相当于拿最后一个节点做头节点
+    }
+
     @Test
     public void test() {
 

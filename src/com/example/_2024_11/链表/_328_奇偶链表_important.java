@@ -41,14 +41,42 @@ public class _328_奇偶链表_important {
         ListNode odd = head;
         ListNode even = head.next;
         ListNode evenHead = even;
-        while (even != null && even.next!=null) {
-            odd.next=even.next;
+        while (even != null && even.next != null) {
+            //even.next!=null判断还有没有奇元素
+            //even！=null 判断是否已经到了尾部
+            odd.next = even.next;//删除偶元素
+            odd = odd.next;
+            //删除奇元素
+            even.next = odd.next;
+            even = even.next;
+
+        }
+        odd.next = evenHead;
+        return head;
+    }
+
+    /**
+     * 思路：一个指针指向奇数节点的头部。然后依次删除下一个节点并后移
+     * 一个指针指向偶数节点的头部，然后依次删除下一个节点并后移
+     *
+     * @param head
+     * @return
+     */
+    public static ListNode oddEvenList1(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        ListNode even = head.next;
+        ListNode odd = head;
+        ListNode evenHead = even;
+        while (even != null && even.next != null) {
+            odd.next = odd.next.next;
             odd=odd.next;
-            even.next=odd.next;
+            even.next=even.next.next;
             even=even.next;
 
         }
-        odd.next=evenHead;
+        odd.next = evenHead;
         return head;
     }
 

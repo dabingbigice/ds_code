@@ -14,6 +14,10 @@ public class _203_移除链表元素 {
             this.val = val;
         }
 
+        public ListNode(int val, ListNode next) {
+            this.val = val;
+            this.next = next;
+        }
     }
 
     /**
@@ -46,4 +50,28 @@ public class _203_移除链表元素 {
         return head;
     }
 
+
+    public ListNode removeElements1(ListNode head, int val) {
+        //判断p2是否为null
+        if (head == null) return null;
+        ListNode dummy = new ListNode(-1, head);
+        ListNode p1 = dummy;
+        ListNode p2 = head;
+        while (p2 != null) {
+            if (p2.val == val) {
+                p1.next = p2.next;
+            } else {
+                p1 = p1.next;
+            }
+            p2 = p2.next;
+
+        }
+
+        return dummy.next;
+    }
+
+    public ListNode removeElements2(ListNode head, int val) {
+
+        return null;
+    }
 }

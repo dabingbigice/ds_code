@@ -105,6 +105,40 @@ public class _19_删除链表的倒数第N个结点 {
         return listNode;
     }
 
+    public static ListNode removeNthFromEnd1(ListNode head, int n) {
+        ListNode dummy = new ListNode(-1, head);
+        recrusion(dummy, n);
+        return dummy.next;
+    }
+
+    private static int recrusion(ListNode p, int n) {
+        if (p == null) return 0;
+        //要传p.next才好，不然删除不了
+        int nth = recrusion(p.next, n);//nth表示下一个节点的位置，而不是当前位置的位置。使用当前位置去删除下一个节点的位置
+        if (nth == n) {
+            p.next = p.next.next;
+        }
+        return nth + 1;
+    }
+
+    public static ListNode removeNthFromEnd3(ListNode head, int n) {
+        ListNode dummy = new ListNode(-1, head);
+        ListNode node = dummy;
+        Stack<ListNode> stack = new Stack<>();
+        while (node != null) {
+            stack.push(node);
+            node = node.next;
+        }
+        int j = 0;
+        while (j != n) {
+            stack.pop();
+            j++;
+        }
+        ListNode pop = stack.pop();
+        pop.next = pop.next.next;
+        return dummy.next;
+    }
+
     public static void main(String[] args) {
         //[1,2,3]
         //ListNode head = new ListNode(1, new ListNode(2, new ListNode(3, null)));

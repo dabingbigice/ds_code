@@ -47,4 +47,33 @@ public class _21_合并两个有序链表 {
         }
         return dummy.next;
     }
+
+    public ListNode mergeTwoLists1(ListNode list1, ListNode list2) {
+        ListNode dummy = new ListNode(-1);
+        ListNode pre = dummy;//新的头节点构建新链表
+        ListNode p1 = list1;
+        ListNode p2 = list2;
+        while (p1 != null && p2 != null) {
+            if (p1.val < p2.val) {
+                ListNode node = p1;
+                p1 = p1.next;
+                pre.next = node;
+                node.next = null;
+            } else {
+                ListNode node = p2;
+                p2 = p2.next;
+                pre.next = node;
+                node.next = null;
+            }
+            pre = pre.next;
+        }
+        if (p1 != null) {
+            pre.next=p1;
+        }
+        if (p2 != null) {
+            pre.next=p2;
+        }
+
+        return dummy.next;
+    }
 }

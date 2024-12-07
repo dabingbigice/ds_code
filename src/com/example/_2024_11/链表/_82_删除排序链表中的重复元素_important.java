@@ -57,5 +57,39 @@ public class _82_删除排序链表中的重复元素_important {
         return dummy.next;
     }
 
+    public static ListNode deleteDuplicates2(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        ListNode dummy = new ListNode(-1, head);
+        ListNode p1 = dummy;
+        ListNode p2 = head;
+        ListNode p3 = head.next;
+        while (p3 != null) {
+            boolean flag = false;
+            //删除重复节点
+            while (p3 != null && p2.val == p3.val) {
+                p2.next = p3.next;//删除p3
+                p3 = p3.next;
+                flag = true;
+            }
+            //删除最先重复的那一个
+            if (flag) {
+                p1.next = p3;
+                p2 = p3;
+                if (p2 != null) p3 = p3.next;
+            } else {
+                p1 = p2;
+                p2 = p3;
+                p3 = p3.next;
+            }
+        }
 
+        return dummy.next;
+    }
+
+    public static void main(String[] args) {
+        ListNode listNode = new ListNode(1, new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(3)))));
+        deleteDuplicates2(listNode);
+    }
 }
