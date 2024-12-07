@@ -25,7 +25,7 @@ public class _876_链表的中间结点 {
      */
     public ListNode middleNode(ListNode head) {
         int count = 0;
-        if (head.next==null) return head;
+        if (head.next == null) return head;
         ListNode current = head;
         while (current != null) {
             count++;
@@ -41,6 +41,18 @@ public class _876_链表的中间结点 {
         head = head.next;
         //然后进行删除count前的数据
         return head;
+    }
+
+    public ListNode middleNode1(ListNode head) {
+        if (head == null || head.next == null) return head;
+        ListNode slow = head;
+        ListNode fast = head.next.next;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+
+        }
+        return slow.next;
     }
 
 }

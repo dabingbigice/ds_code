@@ -71,6 +71,38 @@ public class _234_回文链表 {
         return dummy.next;
     }
 
+    public static boolean isPalindrome1(ListNode head) {
+        if (head == null || head.next == null) return true;
+        ListNode slow = head;
+        ListNode fast = head.next.next;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        ListNode reversNode = revers1(slow.next);
+        ListNode p1 = reversNode;
+        while (p1 != null) {
+            if (head.val != p1.val) {
+                return false;
+            } else {
+                head = head.next;
+                p1 = p1.next;
+            }
+        }
+        return true;
+    }
+
+    public static ListNode revers1(ListNode node) {
+        ListNode dummy = new ListNode(-1);
+        while (node != null) {
+            ListNode current = node;
+            node = node.next;
+            current.next = dummy.next;
+            dummy.next = current;
+        }
+        return dummy.next;
+    }
+
     public static void main(String[] args) {
         ListNode head = new ListNode(1, new ListNode(2, new ListNode(2, new ListNode(1))));
         isPalindrome(head);
