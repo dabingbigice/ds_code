@@ -33,16 +33,21 @@ public class _102二叉树的层序遍历 {
             //每一层要个
             ArrayList<Integer> layerList = new ArrayList<>();
             //相当于记录下一层添加了的节点个数
-            int len = queue.size();
+            int len = queue.size();//先拿到当前层的长度，下一层开始的时候也是拿到当前层的数据
+            //每次进入第一层while的时候都是拿到当前层的节点长度
             while (len > 0) {
+                //只管遍历完当前层
                 TreeNode poll = queue.poll();
                 layerList.add(poll.val);
+
                 if (poll.left != null) {
                     queue.add(poll.left);
                 }
+
                 if (poll.right != null) {
                     queue.add(poll.right);
                 }
+                //只管遍历完当前层
                 len--;
             }
             list.add(layerList);
