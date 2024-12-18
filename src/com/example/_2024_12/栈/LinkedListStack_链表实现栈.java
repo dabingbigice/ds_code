@@ -1,13 +1,13 @@
 package com.example._2024_12.栈;
 
-public class LinkedListStack<E> implements Stack<E> {
+public class LinkedListStack_链表实现栈<E> implements Stack<E> {
     private int size;
     private int capacity;
 
     //head->null
     private Node<E> head = new Node<>(null, null);
 
-    public LinkedListStack(int capacity) {
+    public LinkedListStack_链表实现栈(int capacity) {
         this.capacity = capacity;
     }
 

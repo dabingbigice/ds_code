@@ -1,13 +1,13 @@
 package com.example._2024_12.栈;
 
-public class ArrayStack<E> implements Stack<E> {
+public class ArrayStack_数组实现栈<E> implements Stack<E> {
     private E[] arr;
     private int top;
 
     private int size;
     private int capacity;
 
-    public ArrayStack(int capacity) {
+    public ArrayStack_数组实现栈(int capacity) {
         this.capacity = capacity;
         arr = (E[]) new Object[capacity];
     }

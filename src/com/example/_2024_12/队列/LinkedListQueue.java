@@ -1,7 +1,7 @@
 package com.example._2024_12.队列;
 
 public class LinkedListQueue<E> implements Queue<E> {
-
+    //这里没有pre,所以那不到尾部。不是循环队列
     Node<E> head = new Node<>(null, null);
     Node<E> tail = head;
 
