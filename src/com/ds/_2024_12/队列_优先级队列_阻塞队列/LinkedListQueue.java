@@ -1,4 +1,4 @@
-package com.ds._2024_12.队列;
+package com.ds._2024_12.队列_优先级队列_阻塞队列;
 
 public class LinkedListQueue<E> implements Queue<E> {
     //这里没有pre,所以那不到尾部。不是循环队列

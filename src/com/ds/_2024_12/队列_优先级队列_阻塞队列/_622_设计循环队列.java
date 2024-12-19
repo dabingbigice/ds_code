@@ -1,4 +1,4 @@
-package com.ds._2024_12.队列;
+package com.ds._2024_12.队列_优先级队列_阻塞队列;
 
 public class _622_设计循环队列 {
     int queue[];

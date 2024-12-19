@@ -1,4 +1,4 @@
-package com.ds._2024_12.队列;
+package com.ds._2024_12.队列_优先级队列_阻塞队列;
 
 public class ArrayDeque1_数组实现双端队列<E> implements Deque<E> {
     static int inc(int i, int len) {
