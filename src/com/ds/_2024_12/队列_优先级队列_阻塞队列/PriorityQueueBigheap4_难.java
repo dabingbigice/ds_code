@@ -8,8 +8,7 @@ public class PriorityQueueBigheap4_难<E extends Priority> implements Queue<E> {
     int size;
 
     public PriorityQueueBigheap4_难(int capacity) {
-        priorities = new Priority[capacity + 1];
-        priorities[0] = null;
+        priorities = new Priority[capacity];
     }
 
     /**
@@ -22,23 +21,22 @@ public class PriorityQueueBigheap4_难<E extends Priority> implements Queue<E> {
      * @return
      */
     @Override
+
+    //儿子找父亲
     public boolean offer(E value) {
         //第一个不放数据
         if (isFull()) return false;
-        if (size == 0) {
-            priorities[size + 1] = value;
-            size++;
-            return true;
-        }
-        int child = (size + 1);
-        size++;
-        //先插入到底部
-        int parent = child / 2;
-        while (child > 1 && priorities[parent].priority() < value.priority()) {
-            //如果父亲的优先级小，将父亲下移到孩子节点
+        //offer是用孩子去找父亲
+        int child = size++;
+        //size刚好是需要放入的那个索引
+        int parent = (child - 1) / 2;
+        //因为是从index是0开始的
+        while (child > 0 && priorities[parent].priority() < value.priority()) {
+            //如果parent小，那么把parent下移
             priorities[child] = priorities[parent];
+            //再去寻找新的parent索引
             child = parent;
-            parent = child / 2;
+            parent = (child - 1) / 2;
         }
         priorities[child] = value;
         return true;
@@ -48,30 +46,33 @@ public class PriorityQueueBigheap4_难<E extends Priority> implements Queue<E> {
     public E poll() {
         //先交换堆顶元素，然后再去重新调整堆
         if (isEmpty()) return null;
-        swap(1, size);
+        swap(0, size - 1);
+        size--;
         Priority e = priorities[size];
-
-        priorities[size--] = null;
-        //调整堆
-        down(1);
+        priorities[size]=null;
+        down(0);
         return (E) e;
     }
-
+    //父亲找儿子
     private void down(int parent) {
-        int lef = parent * 2;
-        int right = parent * 2 + 1;
-        //获取高优先级的那个子元素
+        //parent找child
+        int left = parent * 2 + 1;
+        int right = left + 1;
         int max = parent;
-        if (lef <= size && priorities[max].priority() < priorities[lef].priority()) {
-            max = lef;
+        //找到大的那一个节点，然后交换
+        if (left < size && priorities[max].priority() < priorities[left].priority()) {
+            max = left;
         }
-        if (right <= size && priorities[max].priority() < priorities[right].priority()) {
+        //因为已经更改过max的索引，所以如果left大的话。进入right去比较的时候会用left的索引，也就是大的那个。
+        if (right < size && priorities[max].priority() < priorities[right].priority()) {
             max = right;
         }
         if (max != parent) {
+            //max被调整过
             swap(max, parent);
-            down(parent);
+            down(max);
         }
+
     }
 
     public void swap(int i, int j) {
@@ -83,7 +84,7 @@ public class PriorityQueueBigheap4_难<E extends Priority> implements Queue<E> {
     @Override
     public E peek() {
         if (isEmpty()) return null;
-        return (E) priorities[1];
+        return (E) priorities[0];
     }
 
     @Override
@@ -93,7 +94,7 @@ public class PriorityQueueBigheap4_难<E extends Priority> implements Queue<E> {
 
     @Override
     public boolean isFull() {
-        return size == priorities.length - 1;
+        return size == priorities.length;
     }
 
     public static void main(String[] args) {
@@ -105,11 +106,11 @@ public class PriorityQueueBigheap4_难<E extends Priority> implements Queue<E> {
         queue.offer(new Entry("task5", 1));
         assertFalse(queue.offer(new Entry("task6", 7)));
 
-        assertEquals("task4", queue.peek().value);
-        assertEquals("task4", queue.poll().value);
-        assertEquals("task1", queue.poll().value);
-        assertEquals("task2", queue.poll().value);
-        assertEquals("task3", queue.poll().value);
-        assertEquals("task5", queue.poll().value);
+        assertEquals(5, queue.peek().priority());
+        assertEquals(5, queue.poll().priority());
+        assertEquals(4, queue.poll().priority());
+        assertEquals(3, queue.poll().priority());
+        assertEquals(2, queue.poll().priority());
+        assertEquals(1, queue.poll().priority());
     }
 }
