@@ -106,6 +106,8 @@ public class MaxHeap {
         //从最后一个非叶子节点开始调整
         for (int i = size / 2 - 1; i >= 0; i--) {
             down(i);
+            new String("aaa");
+            new StringBuilder().toString();
         }
 
     }
